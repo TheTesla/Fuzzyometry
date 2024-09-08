@@ -40,7 +40,7 @@ def fz_corner_ir_3d(x, y, z):
     p = - 4/11*(x+y+z)
     q = (x**2+y**2+z**2)/11
     if (p/2)**2 - q < 0:
-        return 1
+        return 2
     return -(-p/2 + ((p/2)**2 - q)**0.5)
 
 @njit
@@ -50,8 +50,9 @@ def fz_cuboid_ir(p, s):
     xd = min(w-x, w+x)
     yd = min(l-y, l+y)
     zd = min(h-z, h+z)
-    return fz_corner_ir_3d(xd, yd, zd)
-    #return max(fz_corner_ir_2d(xd, yd), fz_corner_ir(yd, zd), fz_corner_ir(xd, zd))
+    k = 2 
+    return fz_corner_ir_3d(min(xd,k*yd,k*zd), min(k*xd,yd,k*zd),
+                           min(k*xd,k*yd,zd))
 
 
 @njit

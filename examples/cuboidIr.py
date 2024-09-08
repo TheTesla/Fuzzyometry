@@ -15,5 +15,5 @@ def f(x,y,z):
     return False
 
 
-render.renderAndSave(f, 'cuboid_ir.stl', 0.2)
+render.renderAndSave(f, 'cuboid_ir.stl', 0.1)
 
