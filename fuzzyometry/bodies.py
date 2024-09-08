@@ -28,6 +28,24 @@ def rSphere(p):
 
 
 @njit
+def fz_corner_ir(x, y):
+    if x > 2*y:
+        return -y
+    if y > 2*x:
+        return -x
+    return -2/7*(x+y) -((-2/7*(x+y))**2 - (x**2 + y**2)/7)**0.5
+
+@njit
+def fz_cuboid_ir(p, s):
+    x, y, z = p
+    w, l, h = s
+    xd = min(w-x, w+x)
+    yd = min(l-y, l+y)
+    zd = min(h-z, h+z)
+    return max(fz_corner_ir(xd, yd), fz_corner_ir(yd, zd), fz_corner_ir(xd, zd))
+
+
+@njit
 def cuboidIr(p,s,ket=100,m=(0,1,1,1),pp=(0,0,0,0)):
     x, y, z = p
     w, l, h = s

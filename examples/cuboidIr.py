@@ -6,10 +6,14 @@ from fuzzyometry import bodies as fzbdy
 
 @njit
 def f(x,y,z):
-    if fzbdy.cuboidIr((x,y,z),(10,20,30)) - 2 > 0:
+    if max(abs(x),abs(y),abs(z)) > 10:
+        return False
+
+    #if fzbdy.cuboidIr((x,y,z),(10,20,30)) - 2 > 0:
+    if fzbdy.fz_cuboid_ir((x,y,z),(5,5,5)) + 2 < 0:
         return True
     return False
 
 
-render.renderAndSave(f, 'cuboidIr.stl', 0.2)
+render.renderAndSave(f, 'cuboid_ir.stl', 0.2)
 
