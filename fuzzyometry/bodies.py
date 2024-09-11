@@ -50,9 +50,10 @@ def fz_cuboid_ir(p, s):
     xd = min(w-x, w+x)
     yd = min(l-y, l+y)
     zd = min(h-z, h+z)
-    k = 2 
-    return fz_corner_ir_3d(min(xd,k*yd,k*zd), min(k*xd,yd,k*zd),
-                           min(k*xd,k*yd,zd))
+    r = fz_corner_ir_3d(xd,yd,zd)
+    if -2*r < max(xd,yd,zd):
+        return max(fz_corner_ir_2d(xd, yd), fz_corner_ir_2d(yd, zd), fz_corner_ir_2d(xd, zd))
+    return r
 
 
 @njit
