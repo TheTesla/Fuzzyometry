@@ -6,10 +6,10 @@ from fuzzyometry import bodies as fzbdy
 
 @njit
 def f(x,y,z):
-    if fzbdy.cuboidOr((x,y,z),(10,20,30)) - 5 < 0:
+    if fzbdy.fz_cuboid((x,y,z),(10,20,30)) - 5 < 0:
         return True
     return False
 
 
-render.renderAndSave(f, 'cuboidOr.stl', 1)
+render.renderAndSave(f, 'cuboid_or.stl', 1)
 

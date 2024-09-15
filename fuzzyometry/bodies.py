@@ -12,11 +12,10 @@ def radiusXYZ(p):
     return (x**2 + y**2 + z**2)**0.5
 
 @njit
-def cuboidOr(p,s):
+def fz_cuboid_or(p, s):
     x, y, z = p
     w, l, h = s
     d = (min(w-x, w+x, 0)**2 + min(l-y, l+y, 0)**2 + min(h-z, h+z, 0)**2)**0.5
-    d += max(min(abs(x),w)-w, min(abs(y),l)-l, min(abs(z),h)-h)
     return d
 
 @njit
@@ -54,6 +53,18 @@ def fz_cuboid_ir(p, s):
     if -2*r < max(xd,yd,zd):
         return max(fz_corner_ir_2d(xd, yd), fz_corner_ir_2d(yd, zd), fz_corner_ir_2d(xd, zd))
     return r
+
+@njit
+def fz_cuboid(p, s):
+    x, y, z = p
+    w, l, h = s
+    xd = min(w-x, w+x)
+    yd = min(l-y, l+y)
+    zd = min(h-z, h+z)
+    if 0 > min(xd, yd, zd):
+        return fz_cuboid_or(p, s)
+    return fz_cuboid_ir(p, s)
+
 
 
 @njit

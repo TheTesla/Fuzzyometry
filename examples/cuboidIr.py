@@ -10,7 +10,7 @@ def f(x,y,z):
         return False
 
     #if fzbdy.cuboidIr((x,y,z),(10,20,30)) - 2 > 0:
-    if fzbdy.fz_cuboid_ir((x,y,z),(5,5,5)) + 1 < 0:
+    if fzbdy.fz_cuboid((x,y,z),(8,5,5)) + 0.5 < 0:
         return True
     return False
 
