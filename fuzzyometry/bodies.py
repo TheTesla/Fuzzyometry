@@ -55,15 +55,16 @@ def fz_cuboid_ir(p, s):
     return r
 
 @njit
-def fz_cuboid(p, s):
-    x, y, z = p
+def fz_cuboid(pnt, dimensions, r=0):
+    s = [e/2-r for e in dimensions]
+    x, y, z = pnt
     w, l, h = s
     xd = min(w-x, w+x)
     yd = min(l-y, l+y)
     zd = min(h-z, h+z)
     if 0 > min(xd, yd, zd):
-        return fz_cuboid_or(p, s)
-    return fz_cuboid_ir(p, s)
+        return fz_cuboid_or(pnt, s) - r
+    return fz_cuboid_ir(pnt, s) - r
 
 
 
