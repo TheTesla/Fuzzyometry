@@ -9,10 +9,12 @@ from fuzzyometry import combinations as cmb
 def f(x,y,z):
     if max(abs(x),abs(y),abs(z)) > 20:
         return False
-    a = fzbdy.fz_cuboid((x,y,z),(16,6,6), 0.1)
-    b = fzbdy.fz_cuboid((x,y,z),(2,16,2), 0.11)
+    a = fzbdy.fz_cuboid((x,y,z),(16,6,6), 0.2)
+    #b = fzbdy.fz_cuboid((x,y,z),(2,16,2), 0.2)
+    b = fzbdy.fz_circle((x,y), 2)
+    c = fzbdy.fz_sphere((x-5,y,z-2), 2)
 
-    if  cmb.fz_and_chamfer(0.5, a, -b) < 0:
+    if  cmb.fz_and_chamfer(0.3, a, -b, -c) < 0:
         return False
     return True
 
