@@ -11,7 +11,10 @@ def fz_and_chamfer(r, *args):
 
 @njit
 def fz_or_chamfer(r, *args):
-    return -fz_and_chamfer((-e for e in args), r)
+    s = 0.0
+    for a in args:
+        s += max(r-a, 0)**2
+    return s**0.5 - r
 
 
 
