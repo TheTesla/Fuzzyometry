@@ -16,7 +16,7 @@ def f(x, y, z):
     b = fzbdy.fz_circle((x, y), 2)
     c = fzbdy.fz_sphere((x - 5, y, z - 2), 2)
 
-    if cmb.fz_and_chamfer(0.3, a, -b, -c) < 0:
+    if cmb.fz_and_chamfer(0.3, a, -b, -c) > 0:
         return False
     return True
 
