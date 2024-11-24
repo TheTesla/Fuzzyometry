@@ -11,9 +11,10 @@ def f(x, y, z):
     if max(abs(x), abs(y), abs(z)) > 20:
         return False
 
-    if fzthrd.fz_thread((x,y,z)) > 0:
+    if fzthrd.fz_thread((x,y,z),10) > 0:
         return False
+
     return True
 
 
-render.renderAndSave(f, "screw.stl", 0.1)
+render.renderAndSave(f, "screw.stl", 0.2)
