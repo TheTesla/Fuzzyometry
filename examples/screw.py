@@ -11,7 +11,7 @@ def f(x, y, z):
     if max(abs(x), abs(y), abs(z)) > 20:
         return False
 
-    if fzthrd.fz_thread((x,y,z),10) > 0:
+    if fzthrd.fz_thread((x, y, z), 10) > 0:
         return False
 
     return True
