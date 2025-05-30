@@ -9,7 +9,8 @@ from fuzzyometry import threads as fzthrd
 
 
 @njit
-def f(x, y, z):
+def f(p):
+    x, y, z = p[:3]
     k = 0.9
     s = 1.6
     a = fzbdy.fz_cuboid((x, y, z), (25, 25, 60), 0.2)
