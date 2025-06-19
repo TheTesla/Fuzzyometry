@@ -1,5 +1,5 @@
-from numba import njit
 import numpy as np
+from numba import njit
 
 
 @njit
@@ -48,9 +48,9 @@ def _fz_cuboid_ir(p, s):
 
 
 @njit
-def fz_cuboid(pnt, dimensions, r=0.):
-    #s = [e / 2 - r for e in dimensions]
-    s = np.array(dimensions) /2. - r
+def fz_cuboid(pnt, dimensions, r=0.0):
+    # s = [e / 2 - r for e in dimensions]
+    s = np.array(dimensions) / 2.0 - r
     x, y, z = pnt
     w, l, h = s
     xd = min(w - x, w + x)
