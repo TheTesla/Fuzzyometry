@@ -6,13 +6,13 @@ from numba import njit
 def fz_thread_profile(pnt, a=1.0):
     y = pnt[1]
     if abs(y) > 2 * a:
-        return y / a
+        return y
     x = pnt[0] * 2 * np.pi
     sg = np.sign(np.sin(x))
     snglr = 2**-20 - 2**-19 * sg
     p = a / (-np.sin(x) / 2 + snglr)
     q = y / (np.sin(x) + snglr) - 1.0
-    return -p - sg * np.sqrt(max(0, p**2 - 4 * q))
+    return a * (-p - sg * np.sqrt(max(0, p**2 - 4 * q)))
 
 
 @njit
