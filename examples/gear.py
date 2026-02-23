@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
+import numpy as np
 from numba import njit
 from xyzcad import render
-import numpy as np
 
-from fuzzyometry import gears as fzgr
 from fuzzyometry import combinations as cmb
+from fuzzyometry import gears as fzgr
 
 
 @njit
@@ -16,7 +16,7 @@ def f(p):
     if z > 10:
         return False
 
-    if fzgr.evolvente(p, (20,1,20/180*np.pi)) > 0:
+    if fzgr.evolvente(p, (20, 1, 20 / 180 * np.pi)) > 0:
         return False
     return True
 
