@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-xyzcad = ">=0.3.0"
+xyzcad = ">=0.7.0"
 numba = ">=0.58.0"
 
 [tool.poetry.group.dev.dependencies]
