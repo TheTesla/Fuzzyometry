@@ -39,5 +39,5 @@ def evolvente(p, param):
     phi2 = abs((np.arctan2(y, x)) % t - t / 2) - t / 2 * e_b / p_b
     Rf = (x**2 + y**2) ** 0.5 - d_f / 2
 
-    return cmb.fz_or_chamfer(e_b / 2, cmb.fz_and_chamfer(0.1, phi - phi2, Ra), Rf)
+    return cmb.fz_or_chamfer(e_b / 2, d * cmb.fz_and_chamfer(0.1, phi - phi2, Ra), Rf)
     # return phi - phi2

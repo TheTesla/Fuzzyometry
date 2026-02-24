@@ -12,10 +12,12 @@ from fuzzyometry import gears as fzgr
 def f(p):
     x, y, z = p[:3]
 
-    if cmb.fz_and_chamfer(3, fzgr.evolvente(p, (20, 1, 20 / 180 * np.pi)), -z,
-                                            z-10) > 0:
+    if (
+        cmb.fz_and_chamfer(3, fzgr.evolvente(p, (20, 1, 20 / 180 * np.pi)), -z, z - 10)
+        > 0
+    ):
         return False
     return True
 
 
-render.renderAndSave(f, "gear.stl", 0.3)
+render.renderAndSave(f, "gear.stl", 0.1)
