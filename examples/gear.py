@@ -11,12 +11,9 @@ from fuzzyometry import gears as fzgr
 @njit
 def f(p):
     x, y, z = p[:3]
-    if z < 0:
-        return False
-    if z > 10:
-        return False
 
-    if fzgr.evolvente(p, (20, 1, 20 / 180 * np.pi)) > 0:
+    if cmb.fz_and_chamfer(3, fzgr.evolvente(p, (20, 1, 20 / 180 * np.pi)), -z,
+                                            z-10) > 0:
         return False
     return True
 
